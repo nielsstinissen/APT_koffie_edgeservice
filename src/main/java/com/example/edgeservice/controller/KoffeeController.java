@@ -69,26 +69,22 @@ public class KoffeeController {
     }
 
     @GetMapping("/AlleKoffie/soort={soort}/name={name}")
-    public List<KoffieFilled> getKoffieByNaamandSoort(@PathVariable String soort, @PathVariable String naam) {
+    public List<KoffieFilled> getKoffieByNaamandSoort(@PathVariable String soort, @PathVariable String name) {
         List<KoffieFilled> returnlist = new ArrayList<>();
 
-        ResponseEntity<List<Koffie>> responseEntityKoffie =
-                restTemplate.exchange("https://" + koffieDrankenServiceBaseUrl + "/AlleKoffie/soort={soort}/name={name}",
-                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Koffie>>() {
-                        }, soort,naam);
+        String url = "/AlleKoffie/soort="+soort+"/name="+name;
 
-        List<Koffie> koffies = responseEntityKoffie.getBody();
+        Koffie koffie = restTemplate.getForObject("https://" + koffieDrankenServiceBaseUrl + url,
+                Koffie.class);
 
-        for (Koffie koffie: koffies) {
-            ResponseEntity<List<Boon>> responseEntityBoon =
-                    restTemplate.exchange("https://" + koffieBonenServiceBaseUrl + "/boons/naam/{naam}",
-                            HttpMethod.GET, null, new ParameterizedTypeReference<List<Boon>>() {
-                            }, koffie.getBoonName());
+        ResponseEntity<List<Boon>> responseEntityBoon =
+                restTemplate.exchange("https://" + koffieBonenServiceBaseUrl + "/boons/naam/{naam}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Boon>>() {
+                        }, koffie.getBoonName());
 
-            List<Boon> bonen = responseEntityBoon.getBody();
+        List<Boon> bonen = responseEntityBoon.getBody();
 
-            returnlist.add(new KoffieFilled(koffie,bonen.get(0)));
-        }
+        returnlist.add(new KoffieFilled(koffie,bonen.get(0)));
 
         return returnlist;
     }
