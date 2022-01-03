@@ -164,6 +164,17 @@ public class KoffeeController {
         return result;
     }
 
+    @PostMapping("/gerechten")
+    public Gerecht addGerecht(@RequestBody Gerecht gerecht){
+
+
+        Gerecht gerecht_post =
+                restTemplate.postForObject("https://" + koffieGerechtenServiceBaseUrl + "/gerechten/",
+                        gerecht,Gerecht.class);
+
+        return gerecht_post;
+    }
+
 
     // gerecht toevoegen
     // gerecht toevoegen
