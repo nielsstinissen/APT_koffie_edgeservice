@@ -14,5 +14,5 @@ In de __KoffieService__ kan je verschillende soorten koffie vinden.
 En bij de __GerechtenService__ vind je gerechten terug die een bepaalde koffie hebben als ingredient.
 
 ## Deployment Diagram ##
-![deployment-diagram](https://your-copied-image-address)
+![deployment-diagram](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/deployment-diagram.jpg)
 
