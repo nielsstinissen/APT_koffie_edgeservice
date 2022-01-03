@@ -1,8 +1,8 @@
 package com.example.edgeservice.model;
 
-import javax.persistence.*;
 
 public class Koffie {
+
     private Long id;
     private String name;
     private String wheremade;
@@ -10,28 +10,12 @@ public class Koffie {
     private String importantsingredient;
     private String meaning;
     private String soort;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String boonname;
 
     public Koffie() {
     }
 
-//    public Koffie(String name, String wheremade, String whenmade, String importantsingredient, String meaning, String soort) {
-//        this.name = name;
-//        this.wheremade = wheremade;
-//        this.whenmade = whenmade;
-//        this.importantsingredient = importantsingredient;
-//        this.meaning = meaning;
-//        this.soort = soort;
-//    }
-
-    public Koffie(Long id, String name, String wheremade, String whenmade, String importantsingredient, String meaning, String soort) {
+    public Koffie(Long id, String name, String wheremade, String whenmade, String importantsingredient, String meaning, String soort, String boonname) {
         this.id = id;
         this.name = name;
         this.wheremade = wheremade;
@@ -39,6 +23,7 @@ public class Koffie {
         this.importantsingredient = importantsingredient;
         this.meaning = meaning;
         this.soort = soort;
+        this.boonname = boonname;
     }
 
     public String getName() {
@@ -85,5 +70,13 @@ public class Koffie {
 
     public void setSoort(String soort) {
         this.soort = soort;
+    }
+
+    public String getBoonName() {
+        return boonname;
+    }
+
+    public void setBoonName(String boonname) {
+        this.boonname = boonname;
     }
 }

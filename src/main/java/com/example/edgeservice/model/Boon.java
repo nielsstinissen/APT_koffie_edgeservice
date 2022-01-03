@@ -1,6 +1,5 @@
 package com.example.edgeservice.model;
 
-import javax.persistence.*;
 
 public class Boon {
     private int id;
