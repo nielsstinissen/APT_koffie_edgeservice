@@ -190,6 +190,14 @@ public class KoffeeController {
         return retrievedGerecht;
     }
 
+    @DeleteMapping("/gerechten/naam/{naam}")
+    public ResponseEntity deleteRanking(@PathVariable String naam){
+
+        restTemplate.delete("https://" + koffieGerechtenServiceBaseUrl + "/gerechten/naam/"+naam);
+
+        return ResponseEntity.ok().build();
+    }
+
 
 
     // gerecht delete
