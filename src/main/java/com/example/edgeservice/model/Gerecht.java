@@ -2,7 +2,7 @@ package com.example.edgeservice.model;
 
 public class Gerecht {
     private String id;
-    private int koffieDrankId;
+    private String koffieDrankNaam;
     private String naam;
     private String afkomst;
     private double kcal;
@@ -12,9 +12,9 @@ public class Gerecht {
     private int aantalPersonen;
     private String url;
 
-    public Gerecht(int koffieDrankId, String naam, String afkomst, double kcal, boolean isGlutenvrij, boolean isVegan, boolean isVegetarisch, int aantalPersonen, String url) {
+    public Gerecht(String koffieDrankNaam, String naam, String afkomst, double kcal, boolean isGlutenvrij, boolean isVegan, boolean isVegetarisch, int aantalPersonen, String url) {
         this.naam = naam;
-        this.koffieDrankId = koffieDrankId;
+        this.koffieDrankNaam = koffieDrankNaam;
         this.afkomst = afkomst;
         this.kcal = kcal;
         this.isGlutenvrij = isGlutenvrij;
@@ -99,11 +99,11 @@ public class Gerecht {
         this.url = url;
     }
 
-    public int getKoffieDrankId() {
-        return koffieDrankId;
+    public String getKoffieDrankNaam() {
+        return koffieDrankNaam;
     }
 
-    public void setKoffieDrankId(int koffieDrankId) {
-        this.koffieDrankId = koffieDrankId;
+    public void setKoffieDrankNaam(String koffieDrankNaam) {
+        this.koffieDrankNaam = koffieDrankNaam;
     }
 }

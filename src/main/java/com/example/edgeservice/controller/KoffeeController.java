@@ -1,8 +1,6 @@
 package com.example.edgeservice.controller;
 
-import com.example.edgeservice.model.Boon;
-import com.example.edgeservice.model.Koffie;
-import com.example.edgeservice.model.KoffieFilled;
+import com.example.edgeservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -90,15 +88,85 @@ public class KoffeeController {
         return returnlist;
     }
 
-//    /AlleKoffie/soort={soort}/name={name}
-//
-//    /boons/land/{land}
-//
-//    /boons/naam/{naam}
-//
-//    /gerechten/koffiedrank/{koffieDrankId}
-//
-//    /gerechten/afkomst/{afkomst}
+    @GetMapping("/boons/land/{land}")
+    public List<Boon> getBoonByland(@PathVariable String land) {
 
+        ResponseEntity<List<Boon>> responseEntityBoon =
+                restTemplate.exchange("https://" + koffieBonenServiceBaseUrl + "/boons/land/{land}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Boon>>() {
+                        },land);
+
+        List<Boon> bonen = responseEntityBoon.getBody();
+
+        return bonen;
+    }
+
+    @GetMapping("/boons/naam/{naam}")
+    public List<Boon> getBoonBynaam(@PathVariable String naam) {
+
+        ResponseEntity<List<Boon>> responseEntityBoon =
+                restTemplate.exchange("https://" + koffieBonenServiceBaseUrl + "/boons/naam/{naam}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Boon>>() {
+                        },naam);
+
+        List<Boon> bonen = responseEntityBoon.getBody();
+
+        return bonen;
+    }
+
+    @GetMapping("/gerechten/koffiedrank/{koffieDrankNaam}")
+    public List<Gerechtenfilled> getGerechtByKoffieDrankId(@PathVariable String koffieDrankNaam) {
+        List<Gerechtenfilled> result = new ArrayList<>();
+
+        ResponseEntity<List<Gerecht>> responseEntityGerecht =
+                restTemplate.exchange("https://" + koffieGerechtenServiceBaseUrl + "/gerechten/koffiedrank/{koffieDrankNaam}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Gerecht>>() {
+                        },koffieDrankNaam);
+
+        List<Gerecht> gerechten = responseEntityGerecht.getBody();
+
+        for (Gerecht gerecht: gerechten) {
+            ResponseEntity<List<Koffie>> responseEntityKoffie =
+                    restTemplate.exchange("https://" + koffieDrankenServiceBaseUrl + "/AlleKoffie/naam={naam}",
+                            HttpMethod.GET, null, new ParameterizedTypeReference<List<Koffie>>() {
+                            }, gerecht.getKoffieDrankNaam());
+
+            List<Koffie> koffies = responseEntityKoffie.getBody();
+
+            result.add(new Gerechtenfilled(gerecht,koffies.get(0)));
+        }
+
+        return result;
+    }
+
+    @GetMapping("/gerechten/afkomst/{afkomst}")
+    public List<Gerechtenfilled> getGerechtByafkomst(@PathVariable String afkomst) {
+        List<Gerechtenfilled> result = new ArrayList<>();
+
+        ResponseEntity<List<Gerecht>> responseEntityGerecht =
+                restTemplate.exchange("https://" + koffieGerechtenServiceBaseUrl + "/gerechten/afkomst/{afkomst}",
+                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Gerecht>>() {
+                        },afkomst);
+
+        List<Gerecht> gerechten = responseEntityGerecht.getBody();
+
+        for (Gerecht gerecht: gerechten) {
+            ResponseEntity<List<Koffie>> responseEntityKoffie =
+                    restTemplate.exchange("https://" + koffieDrankenServiceBaseUrl + "/AlleKoffie/naam={naam}",
+                            HttpMethod.GET, null, new ParameterizedTypeReference<List<Koffie>>() {
+                            }, gerecht.getKoffieDrankNaam());
+
+            List<Koffie> koffies = responseEntityKoffie.getBody();
+
+            result.add(new Gerechtenfilled(gerecht,koffies.get(0)));
+        }
+
+        return result;
+    }
+
+
+    // gerecht toevoegen
+    // gerecht toevoegen
+    // gerecht update
 
 }
