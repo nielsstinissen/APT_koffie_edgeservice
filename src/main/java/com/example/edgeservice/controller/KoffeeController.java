@@ -29,6 +29,11 @@ public class KoffeeController {
     @Value(("${koffiegerechtenservice.baseurl}"))
     private String koffieGerechtenServiceBaseUrl;
 
+    @GetMapping("/")
+    public List<Koffie> homepage() {
+        return getAllKoffie();
+    }
+
     @GetMapping("/AlleKoffie")
     public List<Koffie> getAllKoffie() {
         List<Koffie> returnList = new ArrayList<>();
@@ -166,8 +171,6 @@ public class KoffeeController {
 
     @PostMapping("/gerechten")
     public Gerecht addGerecht(@RequestBody Gerecht gerecht){
-
-
         Gerecht gerecht_post =
                 restTemplate.postForObject("https://" + koffieGerechtenServiceBaseUrl + "/gerechten/",
                         gerecht,Gerecht.class);
@@ -175,9 +178,19 @@ public class KoffeeController {
         return gerecht_post;
     }
 
+    @PutMapping("/gerechten/naam/{naam}")
+    public Gerecht updateGerecht(@PathVariable String naam ,@RequestBody Gerecht gerecht){
 
-    // gerecht toevoegen
-    // gerecht toevoegen
-    // gerecht update
+        ResponseEntity<Gerecht> responseEntityGerecht =
+                restTemplate.exchange("https://"+koffieGerechtenServiceBaseUrl + "/gerechten/naam/{naam}",
+                        HttpMethod.PUT, new HttpEntity<>(gerecht), Gerecht.class,naam);
 
+        Gerecht retrievedGerecht = responseEntityGerecht.getBody();
+
+        return retrievedGerecht;
+    }
+
+
+
+    // gerecht delete
 }
