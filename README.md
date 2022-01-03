@@ -16,3 +16,10 @@ En bij de __GerechtenService__ vind je gerechten terug die een bepaalde koffie h
 ## Deployment Diagram ##
 ![deployment-diagram](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/deployment-diagram.jpg)
 
+## Swagger UI ##
+INSERT SCREENS
+
+## Front End ##
+Ook hebben we een kleine Angular front end applicatie gemaakt waarop we hebben gelinked met de edge service
+[Front End Angular] (https://yseij.sinners.be/home "Front End Angular")
+[Repo Link] (https://github.com/yseij/front-end-koffie "FrontEndRepo")
