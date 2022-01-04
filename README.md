@@ -13,6 +13,11 @@ In onze service kan je dus informatie vinden over verschillende koffiebonen in d
 In de __KoffieService__ kan je verschillende soorten koffie vinden.\
 En bij de __GerechtenService__ vind je gerechten terug die een bepaalde koffie hebben als ingredient.
 
+## Front End ##
+Ook hebben we een kleine Angular front end applicatie gemaakt waarop we hebben gelinked met de edge service\
+[Front End Angular] (https://apt.sinners.be/ "Front End Angular")\
+[Repo Link] (https://github.com/yseij/front-end-koffie "FrontEndRepo")
+
 ## Deployment Diagram ##
 ![deployment-diagram](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/deployment-diagram.jpg)
 
@@ -50,8 +55,3 @@ DELETE /gerechten/naam/{naam}\
 ![delete-gerechten](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/postman-gerechten-delete.jpg) \
 PUT /gerechten/naam/{naam}\
 ![put-gerechten](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/postman-gerechten-put.jpg) 
- 
-## Front End ##
-Ook hebben we een kleine Angular front end applicatie gemaakt waarop we hebben gelinked met de edge service\
-[Front End Angular] (https://apt.sinners.be/ "Front End Angular")\
-[Repo Link] (https://github.com/yseij/front-end-koffie "FrontEndRepo")
