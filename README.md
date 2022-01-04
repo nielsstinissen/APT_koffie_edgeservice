@@ -1,7 +1,7 @@
 # Koffie services #
 ## Beschrijving ##
 Ons thema voor het eindproject is: __Koffie__.\
-Hierbij hebben we 3 microservices gemaakt.\
+Hierbij hebben we 3 microservices gemaakt.
 
 Naam |Service|Github Repo
 -----|-------|-----------
@@ -17,9 +17,10 @@ En bij de __GerechtenService__ vind je gerechten terug die een bepaalde koffie h
 ![deployment-diagram](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/deployment-diagram.jpg)
 
 ## Swagger UI ##
-INSERT SCREENS
+Beginpagina\
+![begin-pagina](https://github.com/nielsstinissen/APT_koffie_edgeservice/blob/main/screenshots/swagger-index.jpg)
 
 ## Front End ##
 Ook hebben we een kleine Angular front end applicatie gemaakt waarop we hebben gelinked met de edge service\
-[Front End Angular] (https://yseij.sinners.be/home "Front End Angular")\
-[Repo Link] (https://github.com/yseij/front-end-koffie "FrontEndRepo")\
+[Front End Angular] (https://apt.sinners.be/ "Front End Angular")\
+[Repo Link] (https://github.com/yseij/front-end-koffie "FrontEndRepo")
